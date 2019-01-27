@@ -1,5 +1,6 @@
 import Cocoa
 
+// 倒序替换
 class Solution1 {
     func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
         guard nums.count > 0 else {
@@ -28,7 +29,28 @@ class Solution1 {
     }
 }
 
+// 正序替换
 class Solution2 {
+    func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
+        guard nums.count > 0 else {
+            return 0
+        }
+        var firstIndex = 0
+        var curIndex = 0
+        while curIndex < nums.count {
+            if nums[curIndex] != val {
+                nums[firstIndex] = nums[curIndex]
+                firstIndex += 1
+            }
+            curIndex += 1
+        }
+        
+        return firstIndex
+    }
+}
+
+// 正序旋转
+class Solution3 {
     func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
         var len = nums.count
         var j = 0
@@ -41,13 +63,12 @@ class Solution2 {
             } else {
                 j += 1
             }
-            print(nums.description)
         }
         return len
     }
 }
 
-var nums = [3,3,2,2,3,3]
+var nums = [0,1,2,2,3,0,4,2]
 let s = Solution1()
-s.removeElement(&nums, 3)
+s.removeElement(&nums, 2)
 nums
