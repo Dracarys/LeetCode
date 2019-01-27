@@ -1,6 +1,6 @@
 import Cocoa
 
-class Solution {
+class Solution1 {
     func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
         guard nums.count > 0 else {
             return 0
@@ -28,7 +28,26 @@ class Solution {
     }
 }
 
-var nums = [3,2,2,3]
-let s = Solution()
+class Solution2 {
+    func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
+        var len = nums.count
+        var j = 0
+        while j < len {
+            if nums[j] == val {
+                let tmp = nums[j]
+                nums[j] = nums[len - 1]
+                nums[len - 1] = tmp
+                len -= 1
+            } else {
+                j += 1
+            }
+            print(nums.description)
+        }
+        return len
+    }
+}
+
+var nums = [3,3,2,2,3,3]
+let s = Solution1()
 s.removeElement(&nums, 3)
 nums
