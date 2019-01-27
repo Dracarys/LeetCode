@@ -48,8 +48,23 @@ class Solution2 {
     }
 }
 
+// 这到题理解上出现了偏差，应该是通过该函数让数组符合条件，但是数组长度不变，
+// 这样返回值才有意义，外部可以安此返回值读取或切片等等
+class Solution3 {
+    func removeDuplicates(_ nums: inout [Int]) -> Int {
+        var result = 0
+        for n in nums {
+            if result < 2 || n > nums[result - 2] {
+                nums[result] = n
+                result += 1
+            }
+        }
+        return result
+    }
+}
+
 
 var nums = [0,0,1,1,1,1,2,3,3]
-let s = Solution2()
+let s = Solution3()
 s.removeDuplicates(&nums)
 nums
