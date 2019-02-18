@@ -10,7 +10,8 @@ public class TreeNode {
     }
 }
 
-// 直接是最优解，耶✌️，不枉费思考这半个多小时。
+// 直接是最优解，耶✌️，不枉费思考这半个多小时，开始因为不会 Swift 数组切片，所以总想修改去取值范围，
+// 后来发现不可行，递归的就是循环执行某一个固定逻辑，变化的是对象。
 class Solution {
     func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
         guard nums.count > 0 else { return nil }
