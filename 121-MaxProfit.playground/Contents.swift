@@ -41,6 +41,25 @@ class Solution2 {
     }
 }
 
+// 相对于 2 效率没有变化，但是逻辑更清晰。
+class Solution3 {
+    func maxProfit(_ prices: [Int]) -> Int {
+        guard !prices.isEmpty else {
+            return 0
+        }
+        
+        var maxProfit = 0
+        var minPrice = prices.first!
+        
+        prices.forEach { price in
+            maxProfit = max(maxProfit, price - minPrice)
+            minPrice = min(minPrice, price)
+        }
+        
+        return maxProfit
+    }
+}
+
 
 
 let prices = [7, 1, 5, 3, 6, 4]
