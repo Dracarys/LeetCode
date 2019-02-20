@@ -1,1 +1,21 @@
-*.xctimeline
+# Xcode
+build/
+DerivedData/
+
+*.xccheckout
+*.xcuserstate
+
+xcuserdata
+
+!default.xcworkspace
+
+profile
+*.hmap
+*.ipa
+
+# Temporary files
+.DS_Store
+.Trashes
+.Spotlight-V100
+*.swp
+*.lock
