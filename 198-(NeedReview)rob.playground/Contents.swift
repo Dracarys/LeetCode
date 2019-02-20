@@ -1,5 +1,6 @@
 import Cocoa
 
+//!!!!: 这道题还没理解透彻，虽然明白流程，但是没理解“证明过程”。
 class Solution1 {
     func rob(_ nums: [Int]) -> Int {
         guard !nums.isEmpty else {
