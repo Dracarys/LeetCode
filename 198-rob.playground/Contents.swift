@@ -1,6 +1,12 @@
 import Cocoa
 
-//!!!!: 这道题还没理解透彻，虽然明白流程，但是没理解“证明过程”。
+/**
+ * 对于第n个房间而言，如果不抢劫房间n，那么就是n-1个房间的抢劫数目
+ * 如果抢劫房间n，那么必然不能抢房间n-1，即相当于n-2个房间的抢劫数目
+ * 取两者之间的最大值：
+ * 最大利益 = max（上家的最大利益，上家的上家的最大利益 + 当前家的利益）
+ */
+
 class Solution1 {
     func rob(_ nums: [Int]) -> Int {
         guard !nums.isEmpty else {
@@ -20,7 +26,6 @@ class Solution1 {
 }
 
 // forEeach 比 for in 要更快。
-// 最大利益 = max（上家的最大利益，上家的上家的最大利益 + 当前家的利益）
 class Solution2 {
     func rob(_ nums: [Int]) -> Int {
         guard !nums.isEmpty else {
