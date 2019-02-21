@@ -71,8 +71,47 @@ count(numberOf: 100) { (n) -> Bool in
     return true
 }
 
+/**
+ * 这题只当拓展知识面吧，对普通的工程师来说，这种数学问题，
+ * 只要能读懂别人的论文，并且可以把成果转化为实际算法，就可以了。
+ * 真想开创一种全新更快的算法，恐怕不是我等可及的，而且这也不符合
+ * 社会分工中对工程师的定位。当然偶尔娱乐挑战一下也不错！
+ */
 
+// 该算法来自维基
+class SolutionFinal {
+    func countPrimes(_ n: Int ) -> Int {
+        guard n >= 2 else { return 0 }
+        
+        var isPrime = [Bool](repeating: true, count: n)
+        for i in 0..<2 {
+            isPrime[i] = false
+        }
+        
+        var step = 2
+        while step * step < n {
+            if !isPrime[step] {
+                step += 1
+                continue
+            }
+            
+            var j = step * step
+            while j < n {
+                isPrime[j] = false
+                j += step
+            }
+            step += 1
+        }
+        
+        var count = 0
+        for i in 2..<n {
+            if isPrime[i] { count += 1 }
+        }
+        return count
+    }
+}
 
-
+let sf = SolutionFinal()
+sf.countPrimes(100)
 
 
