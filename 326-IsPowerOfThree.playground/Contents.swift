@@ -19,6 +19,16 @@ class Solution1 {
     }
 }
 
+// 该算法主要利用了3的幂因子只能是3或3的幂，因此用整数范围3的最大幂次为19，
+// 即1162261467，故直接将其与自然数n取模，为0则必为3的幂
+// 虽然逻辑不严谨，但该算法巧妙地利用了Int整形的范围限制。
+class Solution2 {
+    
+    func isPowerOfThree(_ n: Int) -> Bool {
+        return n > 0 && 1162261467 % n == 0
+    }
+}
+
 let s = Solution1()
 s.isPowerOfThree(27)
 27%10
