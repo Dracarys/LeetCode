@@ -71,15 +71,8 @@ count(numberOf: 100) { (n) -> Bool in
     return true
 }
 
-/**
- * 这题只当拓展知识面吧，对普通的工程师来说，这种数学问题，
- * 只要能读懂别人的论文，并且可以把成果转化为实际算法，就可以了。
- * 真想开创一种全新更快的算法，恐怕不是我等可及的，而且这也不符合
- * 社会分工中对工程师的定位。当然偶尔娱乐挑战一下也不错！
- */
-
 // 该算法来自维基
-class SolutionFinal {
+class Solution3 {
     func countPrimes(_ n: Int ) -> Int {
         guard n >= 2 else { return 0 }
         
@@ -89,6 +82,7 @@ class SolutionFinal {
         }
         
         var step = 2
+        // 这里用step * step 取代sqrt函数，目的是提高效率，
         while step * step < n {
             if !isPrime[step] {
                 step += 1
@@ -111,7 +105,55 @@ class SolutionFinal {
     }
 }
 
-let sf = SolutionFinal()
+// 下面连个算法与上面的算法基本思路相同，略有优化。
+class Solution4 {
+    func countPrimes(_ n: Int ) -> Int {
+        if n <= 2 { return 0 }
+        if n == 3 { return 1 }
+        
+        var isPrime = [Bool](repeating: true, count: n)
+        var result = n - 2
+        
+        let upper = Int(sqrt(Double(n)))
+        for i in 2...upper {
+            var j = i * i
+            while j < n {
+                if isPrime[j] {
+                    isPrime[j] = false
+                    result -= 1
+                }
+                j += i
+            }
+        }
+        return result
+    }
+}
+
+class SolutionFinal {
+    func countPrimes(_ n: Int ) -> Int {
+        if n <= 2 { return 0 }
+        if n == 3 { return 1 }
+        
+        var isPrime = [Bool](repeating: true, count: n)
+        var result = n - 2
+        
+        var i = 2
+        while i * i < n {
+            var j = i * i
+            while j < n {
+                if isPrime[j] {
+                    isPrime[j] = false
+                    result -= 1
+                }
+                j += i
+            }
+            i += 1
+        }
+        return result
+    }
+}
+
+let sf = SolutionFinal2()
 sf.countPrimes(100)
 
 
