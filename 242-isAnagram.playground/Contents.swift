@@ -41,6 +41,15 @@ class Solution1 {
     }
 }
 
-let s = "anagram", t = "nagaram"
-let solution = Solution()
+// 简介度与2相当，相对更快
+class Solution3 {
+    func isAnagram(_ s: String, _ t: String) -> Bool {
+        guard s.count == t.count else  { return false }
+        guard Set(s) == Set(t) else { return false }
+        return t.utf8.reduce(0, {$0 + Int($1)}) == s.utf8.reduce(0, {$0 + Int($1)})
+    }
+}
+
+let s = "aab", t = "aba"
+let solution = Solution3()
 solution.isAnagram(s, t)
