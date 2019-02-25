@@ -7,7 +7,7 @@ class Solution {
         var originNum = n
         var result: UInt32 = 0
         var steps = 32
-        while  steps > 0 {
+        while steps > 0 {
             result <<= 1
             result += originNum & 1
             originNum >>= 1
