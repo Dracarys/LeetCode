@@ -34,7 +34,7 @@ class Solution {
 
 class Solution1 {
     func strStr(_ haystack: String, _ needle: String) -> Int {
-        
+        //TODO: to be complete.
         return -1
     }
 }
