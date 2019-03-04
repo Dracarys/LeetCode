@@ -3,37 +3,37 @@ import Cocoa
 // 非原创
 class Solution {
     func threeSum(_ nums: [Int]) -> [[Int]] {
-        let newNums = nums.sorted()
+        let numsSotred = nums.sorted()
         
         var results = [[Int]]()
         var i = 0
-        while i < newNums.count {
-            let n = newNums[i]
-            var start = i + 1
-            var end = newNums.count - 1
+        while i < numsSotred.count {
+            let num = numsSotred[i]
+            var head = i + 1
+            var tail = numsSotred.count - 1
             
-            while start < end {
-                let sum = n + newNums[start] + newNums[end]
+            while head < tail {
+                let sum = num + numsSotred[head] + numsSotred[tail]
                 if sum == 0 {
-                    results.append([n, newNums[start], newNums[end]])
-                    start += 1
-                    end -= 1
+                    results.append([num, numsSotred[head], numsSotred[tail]])
+                    head += 1
+                    tail -= 1
                     // 跳过重复
-                    while (start < end && newNums[start] == newNums[start - 1]) {
-                        start += 1
+                    while (head < tail && numsSotred[head] == numsSotred[head - 1]) {
+                        head += 1
                     }
-                    while (start < end && newNums[end] == newNums[end + 1]) {
-                        end -= 1
+                    while (head < tail && numsSotred[tail] == numsSotred[tail + 1]) {
+                        tail -= 1
                     }
                 } else if sum > 0 {
-                    end -= 1
+                    tail -= 1
                 } else {
-                    start += 1
+                    head += 1
                 }
             }
             i += 1
             //跳过重复
-            while i < newNums.count && newNums[i] == newNums[i - 1] {
+            while i < numsSotred.count && numsSotred[i] == numsSotred[i - 1] {
                 i += 1
             }
         }
