@@ -1,4 +1,4 @@
-import Cocoa
+ import Cocoa
 
 class Solution {
     func majorityElement(_ nums: [Int]) -> Int {
@@ -23,26 +23,30 @@ class Solution {
     }
 }
 
+ 
+// 众数：在数组中出现次数大于 ⌊ n/2 ⌋ 的元素
+// 注意⚠️，这种方案只有存在众数的情况下才会返回正确结果，有点废话，这只是相对上面而言的。
 class Solution1 {
+
     func majorityElement(_ nums: [Int]) -> Int {
-        var counter = 1
-        var result = nums.first!
+        var curNum = nums.first!
+        var result = 0
         
-        for i in 1..<nums.count {
-            if result == nums[i] {
-                counter += 1
+        nums.forEach { (n) in
+            if curNum == n {
+                result += 1
             } else {
-                counter -= 1
-                if result == 0 {
-                    result = nums[i + 1]
+                result -= 1
+                if result < 1 {
+                    curNum = n
+                    result = 1
                 }
             }
         }
-        
-        return result
+        return curNum
     }
 }
 
-let nums = [2,2,1,1,1,3,3]
+let nums = [2, 2, 1, 1, 1, 1, 1, 3]
 let s = Solution1()
 s.majorityElement(nums)
