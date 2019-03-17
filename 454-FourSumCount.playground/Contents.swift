@@ -1,6 +1,6 @@
 import Cocoa
 
-// 暴力直观，时间负责度O(n4), 空间复杂度O(1)
+// 暴力直观，时间复杂度O(n⁴), 空间复杂度O(1)
 class Solution {
     func fourSumCount(_ A: [Int], _ B: [Int], _ C: [Int], _ D: [Int]) -> Int {
         guard A.count > 0 else { return 0 }
@@ -22,7 +22,7 @@ class Solution {
     }
 }
 
-
+// 时间复杂度O(n²), 空间复杂度O(n²)
 class Solution1 {
     func fourSumCount(_ A: [Int], _ B: [Int], _ C: [Int], _ D: [Int]) -> Int {
         guard A.count > 0 else { return 0 }
