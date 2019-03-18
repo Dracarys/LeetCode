@@ -28,9 +28,6 @@ class RandomizedSet {
     
     /** Get a random element from the set. */
     func getRandom() -> Int {
-        let allKeys = map.keys
-        let index = Int.random(in: 0..<allKeys.count)
-        let randomKey = allKeys[index]
-        return map[randomKey]!
+        return  map.randomElement()!.key
     }
 }
