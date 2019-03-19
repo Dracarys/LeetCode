@@ -3,21 +3,18 @@ import Cocoa
 class RandomizedSet {
     var map: [Int: Int]
     
-    /** Initialize your data structure here. */
     init() {
         self.map = [Int: Int]()
     }
-    
-    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+
     func insert(_ val: Int) -> Bool {
         if map[val] != nil {
-            map[val] = val
             return false
         }
+        map[val] = val
         return true
     }
     
-    /** Removes a value from the set. Returns true if the set contained the specified element. */
     func remove(_ val: Int) -> Bool {
         if map[val] != nil {
             map.removeValue(forKey: val)
@@ -26,8 +23,56 @@ class RandomizedSet {
         return false
     }
     
-    /** Get a random element from the set. */
     func getRandom() -> Int {
-        return  map.randomElement()!.key
+        // 相对而言，这一步非常耗时。
+        return map.keys.randomElement()!
     }
 }
+
+class RandomizedSet2 {
+    var elements = [Int]()
+    var dic: [Int: Int]
+    
+    init() {
+        self.elements = [Int]()
+        self.dic = [Int: Int]()
+    }
+    
+    func insert(_ val: Int) -> Bool {
+        if dic[val] != nil {
+            return false
+        }
+        elements.append(val)
+        dic[val] = elements.count - 1
+        return true
+    }
+    
+    func remove(_ val: Int) -> Bool {
+        if let i = dic[val]{
+            let lastIndex = elements.count - 1
+            let last = elements.last!
+            elements[lastIndex] = val
+            elements[i] = last
+            dic[last] = i
+            
+            dic.removeValue(forKey: val)
+            elements.popLast()
+            print(elements.description)
+            return true
+        }
+        return false
+    }
+    
+    func getRandom() -> Int {
+        return  elements.randomElement()!
+    }
+}
+
+let s = RandomizedSet()
+s.insert(1)
+s.remove(2)
+s.insert(2)
+s.getRandom()
+s.remove(1)
+s.insert(2)
+s.getRandom()
