@@ -80,7 +80,7 @@ extension List: CustomStringConvertible {
 
 
 
-class SolutionOne {
+class Solution1{
     
     func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         let dummyHead = ListNode(0)
@@ -107,7 +107,7 @@ class SolutionOne {
     }
 }
 
-class SolutionTwo {
+class Solution2 {
     // 该方法在一的基础上进行改进，两条链长度差距越大相对优势越明显。
     func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         let dummyHead = ListNode(0)
@@ -172,7 +172,7 @@ print(l1.description)
 let l2 = List(9).append(7).append(9).append(9).append(9).append(9).append(9).append(9).append(9).append(9).append(9).append(9).append(9).append(9).append(9).append(9)
 print(l2.description)
 
-let solutionOne = SolutionOne()
+let solutionOne = Solution1()
 let start1 = CACurrentMediaTime()
 if let n3 = solutionOne.addTwoNumbers(l1.head, l2.head) {
     let end = CACurrentMediaTime()
@@ -181,7 +181,7 @@ if let n3 = solutionOne.addTwoNumbers(l1.head, l2.head) {
     print(l3.description)
 }
 
-let solutionTwo = SolutionTwo()
+let solutionTwo = Solution2()
 let start2 = CACurrentMediaTime()
 if let n3 = solutionTwo.addTwoNumbers(l1.head, l2.head) {
     let end = CACurrentMediaTime()
