@@ -36,6 +36,8 @@ class Solution {
 class Solution1 {
     func longestCommonPrefix(_ strs: [String]) -> String {
         if strs.count == 0 { return "" }
+        if strs.count == 1 { return strs.first! }
+        if strs[0].isEmpty || strs[1].isEmpty { return "" }
         var commonPrefix = strs[0]
         
         for i in 1..<strs.count {
@@ -53,6 +55,6 @@ class Solution1 {
  * 这道算法题虽然还有其它很多中没法，但是水平扫描相对空间复杂度底，且思路简单。
  */
 
-let strs = ["flower","flow","flight"]
+let strs = ["",""]
 let s = Solution1()
 s.longestCommonPrefix(strs)
