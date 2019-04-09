@@ -30,6 +30,29 @@ class Solution {
     }
 }
 
+// 该算法与上面的思想是一致的，即横向扫描。
+// 时间复杂度为 O(S), S 为所有字符串的字符数之和，空间复杂度 O(1)
+// 最坏情况即为所有字符相同，那么就需要全部比对一遍。
+class Solution1 {
+    func longestCommonPrefix(_ strs: [String]) -> String {
+        if strs.count == 0 { return "" }
+        var commonPrefix = strs[0]
+        
+        for i in 1..<strs.count {
+            while !(strs[i] as NSString).hasPrefix(commonPrefix) {
+                commonPrefix = (commonPrefix as NSString).substring(to: commonPrefix.count - 1)
+                if commonPrefix.isEmpty { return "" }
+            }
+        }
+        return commonPrefix
+    }
+
+}
+
+/**
+ * 这道算法题虽然还有其它很多中没法，但是水平扫描相对空间复杂度底，且思路简单。
+ */
+
 let strs = ["flower","flow","flight"]
-let s = Solution()
+let s = Solution1()
 s.longestCommonPrefix(strs)
