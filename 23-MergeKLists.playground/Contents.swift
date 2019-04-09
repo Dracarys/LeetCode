@@ -41,16 +41,20 @@ class Solution1 {
         guard lists.count > 1 else { return lists.first as? ListNode }
         return partition(lists, left: 0, right: lists.count - 1)
     }
+    
+    // 归并合并2个有序链表，很简单，K 个就复杂了，怎么办呢？
+    // 降维，把它拆分称2个的小问题
     func partition(_ lists: [ListNode?], left: Int, right: Int) -> ListNode? {
         guard left < right else { return lists[left] }
         let mid = (left + right) / 2
+        // 递归拆分
         let l = partition(lists, left: left, right: mid)
         let r = partition(lists, left: mid + 1, right: right)
+        // 递归合并
         return mergeTwoLists(l, r)
     }
     
     func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-        
         guard l1 != nil else { return l2 }
         guard l2 != nil else { return l1 }
         if l1!.val > l2!.val {
