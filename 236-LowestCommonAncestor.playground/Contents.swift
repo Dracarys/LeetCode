@@ -41,7 +41,7 @@ class TreeNode {
     }
 }
 
-// 递归解法
+// 递归解法，来自力扣评论。
 class Solution {
     public func lowestCommonAncestor(_ root: TreeNode?, p: TreeNode, q: TreeNode) -> TreeNode? {
         // 首先考虑根节点
